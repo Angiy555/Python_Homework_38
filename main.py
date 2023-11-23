@@ -55,6 +55,11 @@ def find_by_atribute(file_name:str):
     input("\n--- нажмите enter для продолжения ---")
 
 def modify_data(file_name):
+    """
+    Функция принимает имя файла  (file_name) в виде строки
+    выдает список контактов в котором выбирается контакт для изменения
+    и запрашивает новые данные 
+    """
     with open(file_name, 'r',encoding='utf-8') as fd:
         data = sorted(fd.readlines())
         print_data(data)
@@ -73,6 +78,10 @@ def modify_data(file_name):
             return
 
 def remove_data(file_name):
+    """
+    Функция принимает имя файла  (file_name) в виде строки
+    выдает список контактов в котором выбирается контакт для удаления
+    """
     with open(file_name, 'r',encoding='utf-8') as fd:
         data = sorted(fd.readlines())
         print_data(data)
@@ -88,6 +97,9 @@ def remove_data(file_name):
             return
 
 def print_data(data):
+    """
+    Функция принимает данные и выводит в консоль
+    """
     phone_book = []
     person_ID = 1
     split_line = "=" * 70    
