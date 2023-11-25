@@ -13,9 +13,12 @@ def show_all(file_name:str):
     Функция принимает имя файла  (file_name) в иде строки
     и выводит телефонную книгу на экран
     """
-    with open(file_name, 'r',encoding='utf-8') as fd:
-        data = sorted(fd.readlines())
-        print_data(data)
+    try:
+        with open(file_name, 'r',encoding='utf-8') as fd:
+            data = sorted(fd.readlines())
+            print_data(data)
+    except FileNotFoundError:
+        print('Пока нет ни одной записи.')
     input("\n--- нажмите enter для продолжения ---")
 
 def add_new(file_name: str):
@@ -101,7 +104,7 @@ def print_data(data):
     Функция принимает данные и выводит в консоль
     """
     phone_book = []
-    person_ID = 1
+    person_id  = 1
     split_line = "=" * 70    
     print(split_line)
     print(" №  Фамилия        Имя          Отчество          Номер телефона")
@@ -110,7 +113,7 @@ def print_data(data):
         last_name, first_name, patronymic, phone_number = contact.split(", ")
         phone_book.append(
             {
-                "ID": person_ID,
+                "ID": person_id ,
                 "last_Name": last_name,
                 "first_name": first_name,
                 "patronymic": patronymic,
@@ -120,8 +123,8 @@ def print_data(data):
         person_ID += 1
 
     for contact in phone_book:
-        person_ID, last_name, first_name, patronymic, phone_number = contact.values()
-        print(f"{person_ID:>1}. {last_name:<15} {first_name:<12} {patronymic:<15}  {phone_number:<10}")
+        person_id , last_name, first_name, patronymic, phone_number = contact.values()
+        print(f"{person_id :>1} {last_name:<15} {first_name:<12} {patronymic:<15}  {phone_number:<10}")
 
     print(split_line)
 
